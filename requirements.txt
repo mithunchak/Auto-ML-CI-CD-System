@@ -1,0 +1,10 @@
+
+# Testing for CI/CD
+pytest
+
+# CI/CD MLOps Tools
+cml
+dvc
+
+# Code Quality (CI/CD)
+flake8
