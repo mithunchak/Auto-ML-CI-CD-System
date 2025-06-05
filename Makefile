@@ -15,4 +15,4 @@ eval:
 	echo '\n## Confusion Matrix Plot' >> report.md
 	echo '![Confusion Matrix](./Results/model_results.png)' >> report.md
 
-	npx cml comment create report.md --publish --debug
+	npx cml comment create report.md --publish 
