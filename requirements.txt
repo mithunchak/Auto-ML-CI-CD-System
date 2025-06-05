@@ -1,10 +1,18 @@
 
-# Testing for CI/CD
+# Core ML Libraries
+numpy
+pandas
+scikit-learn
+
+# Code Formatting (for make format)
+black
+
+# Testing
 pytest
 
 # CI/CD MLOps Tools
 cml
-dvc
 
-# Code Quality (CI/CD)
-flake8
+# File I/O and utilities
+matplotlib
+seaborn
