@@ -57,7 +57,8 @@ disp.plot()
 plt.savefig("Results/model_results.png", dpi=120)
 
 
-
+# cd/ci pipeline model saving
+# Save the model using skops.io
 import skops.io as sio
 
 sio.dump(pipe, "Model/drug_pipeline.skops")
