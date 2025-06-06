@@ -1,2 +1,4 @@
 scikit-learn
 skops
+gradio
+huggingface_hub[cli]

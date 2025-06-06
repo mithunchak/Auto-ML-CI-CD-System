@@ -9,3 +9,4 @@ matplotlib==3.7.2
 # Code formatting
 black==23.7.0
 skops 
+huggingface_hub[cli]
