@@ -1,0 +1,51 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions: write-all # Required for CML to post comments
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Set up Node.js for CML
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16'
+          
+      - name: Install CML
+        run: npm install -g @dvcorg/cml 
+        
+      - name: Install dependencies
+        run: make install
+
+      - name: Format code
+        run: make format
+
+      - name: Train model
+        run: make train
+
+      - name: Evaluate model & post CML report
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: make eval
+        
+      - name: Update Branch
+        env:
+          NAME: ${{ secrets.USER_NAME }}
+          EMAIL: ${{ secrets.USER_EMAIL }}
+        run: make update-branch USER_NAME=$NAME USER_EMAIL=$EMAIL
